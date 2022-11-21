@@ -1,44 +1,50 @@
 [
   {
-    "id":0,
+    "id": 0,
     "title": "hello",
+    "project": "todo",
     "description": "See the operahouse",
-    "category": [{ "type": "work", "where": "Oslo" }],
-    "done": true
-  },
-  {
-    "id":1,
-    "title": "hello",
-    "description": "See the operahouse",
-    "category": [{ "type": "work", "where": "Oslo" }],
+    "type": "Planned",
     "done": false
   },
   {
-    "id":2,
+    "id": 1,
     "title": "hello",
     "description": "See the operahouse",
-    "category": [{ "type": "work", "where": "Oslo" }],
+    "project": "todo",
+    "type": "Ready",
     "done": false
   },
   {
-    "id":3,
+    "id": 2,
     "title": "hello",
     "description": "See the operahouse",
-    "category": [{ "type": "work", "where": "Oslo" }],
+    "project": "todo",
+    "type": "ReadyDevelopment",
     "done": false
   },
   {
-    "id":4,
+    "id": 3,
     "title": "hello",
+    "project": "todo",
     "description": "See the operahouse",
-    "category": [{ "type": "work", "where": "Oslo" }],
+    "type": "InDevelopment",
     "done": false
   },
   {
-    "id":5,
+    "id": 4,
     "title": "hello",
+    "project": "project 2",
     "description": "See the operahouse",
-    "category": [{ "type": "work", "where": "Oslo" }],
-    "done": true
+    "type": "ReadyReview",
+    "done": false
+  },
+  {
+    "id": 5,
+    "title": "hello",
+    "project": "project 2",
+    "description": "See the operahouse",
+    "type": "ReadyReview",
+    "done": false
   }
 ]

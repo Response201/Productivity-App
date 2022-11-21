@@ -9,16 +9,14 @@ export const todos = createSlice({
   reducers: {
     newTodo: (state, action) => {
       const newTodo = {
-        "id":state.todosList.length,
-        "title": action.payload.title,
-        "description": action.payload.description,
-        "category": [{ "type": action.payload.type, "where": action.payload.where }],
-        "done": false
-
-
-      }
-      state.todosList = [...state.todosList, newTodo]
-      
+        id: Date.now(),
+        title: action.payload.title,
+        description: action.payload.description,
+        project: action.payload.project,
+        type: action.payload.type,
+        done: false
+      };
+      state.todosList = [...state.todosList, newTodo];
     },
 
     completeTodo: (state, action) => {
@@ -26,7 +24,6 @@ export const todos = createSlice({
         (todo) => todo.id === action.payload.id
       );
       state.todosList[todoIndex].done = action.payload.done;
-     
     },
 
     deleteTodo: (state, action) => {
@@ -34,8 +31,15 @@ export const todos = createSlice({
         (todo) => todo.id === action.payload.id
       );
       state.todosList.splice(todoIndex, 1);
+    },
+
+    changeType: (state, action) => {
+      const todoIndex = state.todosList.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+      state.todosList[todoIndex].type = action.payload.type;
     }
   }
 });
 
-export const { completeTodo, deleteTodo } = todos.actions;
+export const { completeTodo, deleteTodo, changeType, newTodo } = todos.actions;
