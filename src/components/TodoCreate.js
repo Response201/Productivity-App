@@ -64,9 +64,9 @@ export const TodoCreate = () => {
           Type
           <select onChange={(e) => setType(e.target.value)}>
             <option value="Planned">Planned</option>
-            <option value="ReadyDevelopment">Ready for Development</option>
-            <option value="InDevelopment">In Development</option>
-            <option value="ReadyReview">Done</option>
+            <option value="Ready for Development">Ready for Development</option>
+            <option value="In Development">In Development</option>
+            <option value="Ready for Review">Ready for Review</option>
           </select>
         </label>
 

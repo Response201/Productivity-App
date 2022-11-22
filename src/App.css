@@ -1,38 +1,62 @@
 .App {
+  height: 98vh;
+  width: 98vw;
+  overflow: hidden;
+  padding: 2vh 1vw 0 1vw;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+* {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* create todo component */
+.createTodo___container {
+  height: 20%;
+
+  background-color: burlywood;
+}
+
+/* todo display list and select project */
+
+.todoList___container {
+  padding-top: 2%;
+  height: 77%;
+  width: 100%;
+}
+
+.todoList___select_project_input {
+  display: flex;
+}
+
+.todoList___content_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2%;
+  justify-content: space-around;
+  width: 98vw;
+  height: 98%;
+  overflow-y: scroll;
+  padding-bottom: 3%;
+}
+
+.todoList___category_section {
+  background-color: bisque;
+}
+.todoList___category_section h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+

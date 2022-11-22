@@ -12,7 +12,7 @@
     "title": "hello",
     "description": "See the operahouse",
     "project": "todo",
-    "type": "Ready",
+    "type": "Ready for Development",
     "done": false
   },
   {
@@ -20,7 +20,7 @@
     "title": "hello",
     "description": "See the operahouse",
     "project": "todo",
-    "type": "ReadyDevelopment",
+    "type": "In Development",
     "done": false
   },
   {
@@ -28,7 +28,7 @@
     "title": "hello",
     "project": "todo",
     "description": "See the operahouse",
-    "type": "InDevelopment",
+    "type": "Ready for Development",
     "done": false
   },
   {
@@ -36,15 +36,15 @@
     "title": "hello",
     "project": "project 2",
     "description": "See the operahouse",
-    "type": "ReadyReview",
-    "done": false
+    "type": "In Development",
+    "done": true
   },
   {
     "id": 5,
     "title": "hello",
     "project": "project 2",
     "description": "See the operahouse",
-    "type": "ReadyReview",
+    "type": "Ready for Review",
     "done": false
   }
 ]

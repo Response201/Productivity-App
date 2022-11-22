@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
+import "./todoComponent.css";
 import { useDispatch } from "react-redux";
 import { changeType, deleteTodo, completeTodo } from "../reducer/todos";
+import check from "../assets/lottie/check.json";
+import { useLottie } from "lottie-react";
+
 export const TodoComponent = ({ item }) => {
+  const [edit, setEdit] = useState(true);
   const [newType, setNewType] = useState(item.type);
   const dispatch = useDispatch();
 
@@ -22,30 +27,49 @@ export const TodoComponent = ({ item }) => {
   };
 
   return (
-    <section>
+    <section className="todoComponent___content">
+      <button onClick={() => setEdit(!edit)}>Edit</button>
       <h1>{item.title}</h1>
       <p>{item.description}</p>
       <p> {item.project} </p>
 
-      {item.done ? (
-        <p>Done</p>
-      ) : (
-        <label>
-          Type
-          <select
-            value={item.type}
-            onChange={(e) => setNewType(e.target.value)}
-          >
-            <option value="Planned">Planned</option>
-            <option value="ReadyDevelopment">Ready for Development</option>
-            <option value="InDevelopment">In Development</option>
-            <option value="ReadyReview">Ready for Review</option>
-          </select>
-        </label>
-      )}
+      <section className="todoComponent___edit_section">
+        {edit ? (
+          <>{item.done ? <p>Done</p> : <p>{item.type}</p>}</>
+        ) : (
+          <>
+            {item.done ? (
+              <p>Done</p>
+            ) : (
+              <p>
+                Type
+                <select
+                  value={item.type}
+                  onChange={(e) => setNewType(e.target.value)}
+                >
+                  <option value="Planned">Planned</option>
+                  <option value="Ready for Development">
+                    Ready for Development
+                  </option>
+                  <option value="In Development">In Development</option>
+                  <option value="Ready for Review">Ready for Review</option>
+                </select>
+              </p>
+            )}
 
-      <input type="checkbox" checked={item.done} onChange={onClickComplete} />
-      <button onClick={onClickDelete}>Delete</button>
+            <p>
+              Done
+              <input
+                type="checkbox"
+                checked={item.done}
+                onChange={onClickComplete}
+              />
+            </p>
+
+            <button onClick={onClickDelete}>Delete</button>
+          </>
+        )}
+      </section>
     </section>
   );
 };
