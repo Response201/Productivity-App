@@ -3,28 +3,87 @@
   height: 100%;
   padding: 2%;
   margin-bottom: 5px;
-  background-color: azure;
+  background-color: rgb(135, 187, 187);
+  position: relative;
 }
-
-
-
-
 
 .todoComponent___edit_section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   height: 90px;
+  width: 100%;
   padding: 0;
   margin: 0;
 }
+
+.todoComponent___editButton {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+
 .todoComponent___edit_section p {
   margin: 0;
   margin-bottom: 15px;
   padding: 0;
   text-align: start;
-  height: 20px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  position: relative;
+}
+
+.relative {
+  position: relative;
+  width: 100%;
+  height: 33px;
+  overflow: hidden;
+}
+
+.todoComponent___completeLottie_container {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: rgb(188, 203, 188);
+  padding: 0;
+  position: absolute;
+  z-index: 10;
+  margin: 1px;
+}
+
+.lottie {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 460%;
+  margin: -180% 0 0 -180%;
+  width: 460%;
+}
+.todoComponent___completeLottie_container:hover {
+  transform: scale(95%);
+}
+
+.todoComponent___deleteLottie_container {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: rgb(185, 144, 149);
+  padding: 0;
+  position: absolute;
+  z-index: 10;
+  margin: 1px;
+  left: 45px;
+  transition: ease-in 0.2s;
+}
+.todoComponent___deleteLottie_container:hover {
+  transform: scale(95%);
+}
+
+.lottieDelete {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }

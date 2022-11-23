@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./todoComponent.css";
 import { useDispatch } from "react-redux";
 import { changeType, deleteTodo, completeTodo } from "../reducer/todos";
-import check from "../assets/lottie/check.json";
-import { useLottie } from "lottie-react";
+
+import { BtnComplete } from "./BtnComplete";
+import { BtnDelete } from "./BtnDelete";
 
 export const TodoComponent = ({ item }) => {
   const [edit, setEdit] = useState(true);
   const [newType, setNewType] = useState(item.type);
+  const [deletes, setDeletes] = useState(false);
   const dispatch = useDispatch();
 
   /* change type for a todo */
@@ -23,18 +25,25 @@ export const TodoComponent = ({ item }) => {
   /* Delete todo */
 
   const onClickDelete = () => {
-    dispatch(deleteTodo({ id: item.id }));
+    setDeletes(true);
+    setTimeout(() => {
+      dispatch(deleteTodo({ id: item.id }));
+    }, 2500);
   };
 
   return (
     <section className="todoComponent___content">
-      <button onClick={() => setEdit(!edit)}>Edit</button>
+      {!item.done && 
+      <div className="todoComponent___editButton">
+      <button  onClick={() => setEdit(!edit)}>Edit</button>
+      </div>}
+
       <h1>{item.title}</h1>
       <p>{item.description}</p>
       <p> {item.project} </p>
 
       <section className="todoComponent___edit_section">
-        {edit ? (
+        {edit  ? (
           <>{item.done ? <p>Done</p> : <p>{item.type}</p>}</>
         ) : (
           <>
@@ -56,19 +65,24 @@ export const TodoComponent = ({ item }) => {
                 </select>
               </p>
             )}
-
-            <p>
-              Done
-              <input
-                type="checkbox"
-                checked={item.done}
-                onChange={onClickComplete}
-              />
-            </p>
-
-            <button onClick={onClickDelete}>Delete</button>
           </>
         )}
+
+        <section className="relative">
+          <div
+            onClick={onClickComplete}
+            className="todoComponent___completeLottie_container"
+          >
+            <BtnComplete item={item} />
+          </div>
+
+          <div
+            onClick={onClickDelete}
+            className="todoComponent___deleteLottie_container"
+          >
+            <BtnDelete deletes={deletes} />
+          </div>
+        </section>
       </section>
     </section>
   );
