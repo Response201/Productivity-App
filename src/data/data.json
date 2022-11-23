@@ -5,6 +5,10 @@
     "project": "todo",
     "description": "See the operahouse",
     "type": "Planned",
+    "who": "Frontend",
+    "what": "Feature",
+    "priority": "Low",
+
     "done": false
   },
   {
@@ -13,6 +17,9 @@
     "description": "See the operahouse",
     "project": "todo",
     "type": "Ready for Development",
+    "who": "Backend",
+    "what": "Bug",
+    "priority": "Critical",
     "done": false
   },
   {
@@ -21,6 +28,9 @@
     "description": "See the operahouse",
     "project": "todo",
     "type": "In Development",
+    "who": "Backend",
+    "what": "Database",
+    "priority": "Moderate",
     "done": false
   },
   {
@@ -29,6 +39,9 @@
     "project": "todo",
     "description": "See the operahouse",
     "type": "Ready for Development",
+    "who": "Frontend",
+    "what": "Bug",
+    "priority": "High",
     "done": false
   },
   {
@@ -37,6 +50,9 @@
     "project": "project 2",
     "description": "See the operahouse",
     "type": "In Development",
+    "who": "Backend",
+    "what": "Feature",
+    "priority": "Low",
     "done": true
   },
   {
@@ -45,6 +61,9 @@
     "project": "project 2",
     "description": "See the operahouse",
     "type": "Ready for Review",
+    "who": "Frontend",
+    "what": "Feature",
+    "priority": "Low",
     "done": false
   }
 ]

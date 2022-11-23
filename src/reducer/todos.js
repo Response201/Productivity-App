@@ -14,6 +14,9 @@ export const todos = createSlice({
         description: action.payload.description,
         project: action.payload.project,
         type: action.payload.type,
+        who: action.payload.who,
+        what: action.payload.what,
+        priority: action.payload.priority,
         done: false
       };
       state.todosList = [...state.todosList, newTodo];

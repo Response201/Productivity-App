@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import "./todoComponent.css";
 import { useDispatch } from "react-redux";
 import { changeType, deleteTodo, completeTodo } from "../reducer/todos";
-
 import { BtnComplete } from "./BtnComplete";
 import { BtnDelete } from "./BtnDelete";
+import { BtnEdit } from "./BtnEdit";
+import { DisplayIconForWhat } from "./DisplayIconForWhat";
 
 export const TodoComponent = ({ item }) => {
   const [edit, setEdit] = useState(true);
   const [newType, setNewType] = useState(item.type);
   const [deletes, setDeletes] = useState(false);
+  const [move, setMove] = useState(false);
+
   const dispatch = useDispatch();
 
   /* change type for a todo */
@@ -31,19 +34,27 @@ export const TodoComponent = ({ item }) => {
     }, 2500);
   };
 
+  const onMouseOverMove = () => {
+    setMove(!move);
+  };
+
   return (
     <section className="todoComponent___content">
-      {!item.done && 
-      <div className="todoComponent___editButton">
-      <button  onClick={() => setEdit(!edit)}>Edit</button>
-      </div>}
+      {!item.done && (
+        <div
+          className="todoComponent___editButton"
+          onClick={() => setEdit(!edit)}
+          onMouseEnter={onMouseOverMove}
+        >
+          <p>Edit</p>
+          <BtnEdit move={move} />
+        </div>
+      )}
 
       <h1>{item.title}</h1>
       <p>{item.description}</p>
-      <p> {item.project} </p>
-
       <section className="todoComponent___edit_section">
-        {edit  ? (
+        {edit ? (
           <>{item.done ? <p>Done</p> : <p>{item.type}</p>}</>
         ) : (
           <>
@@ -68,7 +79,9 @@ export const TodoComponent = ({ item }) => {
           </>
         )}
 
-        <section className="relative">
+
+        <section className="todoComponent___iconAndBtns">
+          <section className="todoComponent___btns"> 
           <div
             onClick={onClickComplete}
             className="todoComponent___completeLottie_container"
@@ -82,6 +95,12 @@ export const TodoComponent = ({ item }) => {
           >
             <BtnDelete deletes={deletes} />
           </div>
+          </section>
+<section  className="todoComponent___icon"> 
+          <p className="todoComponent___whoP"> {item.who} </p>
+<div className="todoComponent___whatP"> <DisplayIconForWhat item={item.what} />  </div>
+<p className="todoComponent___prioP" > {item.priority} </p>
+</section>
         </section>
       </section>
     </section>

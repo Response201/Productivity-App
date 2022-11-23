@@ -20,7 +20,31 @@
 .todoComponent___editButton {
   position: absolute;
   right: 0;
-  margin-right: 10px;
+  margin-right: 5px;
+  height: 100px;
+  width: 100px;
+}
+
+.lottieEdit {
+  margin-top: -27%;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  right: 0;
+  left: 18%;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.todoComponent___editButton p {
+  position: absolute;
+  margin-top: 10px;
+  left: 55%;
+  z-index: 10;
+  color: white;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
 }
 
 .todoComponent___edit_section p {
@@ -35,11 +59,22 @@
   position: relative;
 }
 
-.relative {
+.todoComponent___iconAndBtns {
   position: relative;
   width: 100%;
   height: 33px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Btns -lotties */
+
+.todoComponent___btns {
+  width: 20%;
+  min-width: 70px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .todoComponent___completeLottie_container {
@@ -76,6 +111,7 @@
   margin: 1px;
   left: 45px;
   transition: ease-in 0.2s;
+  overflow: hidden;
 }
 .todoComponent___deleteLottie_container:hover {
   transform: scale(95%);
@@ -86,4 +122,56 @@
   top: 0;
   bottom: 0;
   right: 0;
+}
+
+/* Icons - who, what, prio */
+
+.todoComponent___icon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  width: 50%;
+  margin-left: 15px;
+  height: 100%;
+  margin: 0;
+}
+.todoComponent___icon p {
+  display: flex;
+  margin: 0 0 0 15px;
+  width: 32%;
+  min-width: fit-content;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 22px;
+  color: white;
+  font-size: 70%;
+  font-weight: 600;
+}
+
+.todoComponent___whoP {
+  background-color: rgba(207, 154, 54, 0.856);
+  border-radius: 3px;
+  display: flex;
+  height: 20px;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoComponent___whatP {
+  display: flex;
+  height: 20px;
+  width: 25%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.todoComponent___prioP {
+  display: flex;
+  height: 20px;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
 }
