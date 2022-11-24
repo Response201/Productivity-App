@@ -6,8 +6,6 @@ export const DisplayIconForWhat = ({ item }) => {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    console.log(item);
-
     if (item === "Bug") {
       setImage(Bug);
     }
@@ -19,8 +17,8 @@ export const DisplayIconForWhat = ({ item }) => {
   }, [item]);
 
   return (
-    <div style={{ heigth: "100%", width: "20px" }}>
-      <img src={image} />
+    <div style={{ heigth: "20px", width: "20px",display:'flex', justifyContent:'center'  }}>
+      <img src={image} alt="icon" style={{ heigth: "20px", width: "20px" }} />
     </div>
   );
 };

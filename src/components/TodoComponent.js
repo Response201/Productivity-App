@@ -6,12 +6,14 @@ import { BtnComplete } from "./BtnComplete";
 import { BtnDelete } from "./BtnDelete";
 import { BtnEdit } from "./BtnEdit";
 import { DisplayIconForWhat } from "./DisplayIconForWhat";
+import { DisplayIconForPriority } from "./DisplayIconForPriority";
 
 export const TodoComponent = ({ item }) => {
   const [edit, setEdit] = useState(true);
   const [newType, setNewType] = useState(item.type);
   const [deletes, setDeletes] = useState(false);
   const [move, setMove] = useState(false);
+  const [statusIcon, setstatusIcon] = useState(item.status)
 
   const dispatch = useDispatch();
 
@@ -34,9 +36,32 @@ export const TodoComponent = ({ item }) => {
     }, 2500);
   };
 
+  /* activate animation on mouse over edit-btn */
+
   const onMouseOverMove = () => {
     setMove(!move);
   };
+
+
+/* Change the status of "todo" */
+
+const onClickChangeStatus = () => {
+
+
+ if(item.status === 'open'){
+  setstatusIcon('pending')
+ }
+else if(item.status === 'pending'){
+  setstatusIcon('')
+}
+else{
+  setstatusIcon('open')
+}
+
+
+}
+
+
 
   return (
     <section className="todoComponent___content">
@@ -99,7 +124,8 @@ export const TodoComponent = ({ item }) => {
 <section  className="todoComponent___icon"> 
           <p className="todoComponent___whoP"> {item.who} </p>
 <div className="todoComponent___whatP"> <DisplayIconForWhat item={item.what} />  </div>
-<p className="todoComponent___prioP" > {item.priority} </p>
+<div className="todoComponent___prioP" >   <DisplayIconForPriority status={item.priority} /> </div>
+<div className="todoComponent___statusP" onClick={onClickChangeStatus}> {item.status} </div>
 </section>
         </section>
       </section>

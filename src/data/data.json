@@ -8,7 +8,7 @@
     "who": "Frontend",
     "what": "Feature",
     "priority": "Low",
-
+"status":"open",
     "done": false
   },
   {
@@ -20,6 +20,7 @@
     "who": "Backend",
     "what": "Bug",
     "priority": "Critical",
+    "status":"",
     "done": false
   },
   {
@@ -31,6 +32,7 @@
     "who": "Backend",
     "what": "Database",
     "priority": "Moderate",
+    "status":"pending",
     "done": false
   },
   {
@@ -53,6 +55,7 @@
     "who": "Backend",
     "what": "Feature",
     "priority": "Low",
+    "status":"open",
     "done": true
   },
   {
@@ -64,6 +67,7 @@
     "who": "Frontend",
     "what": "Feature",
     "priority": "Low",
+    "status":"pending",
     "done": false
   }
 ]
