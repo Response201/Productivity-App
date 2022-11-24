@@ -1,10 +1,11 @@
 .todoComponent___content {
   width: 96%;
   height: 100%;
-  padding: 2%;
+  padding: 1% 2% 0 2%;
   margin-bottom: 5px;
   background-color: rgb(135, 187, 187);
   position: relative;
+  border-radius: 5px;
 }
 
 .todoComponent___edit_section {
@@ -44,7 +45,7 @@
   z-index: 10;
   color: white;
   font-size: 15px;
-  text-shadow: 2px 2px black;
+  text-shadow: 1px 1px black;
 }
 
 .todoComponent___edit_section p {
@@ -58,6 +59,10 @@
   width: 100%;
   position: relative;
 }
+
+
+
+/* Icon and button section */
 
 .todoComponent___iconAndBtns {
   position: relative;
@@ -152,7 +157,7 @@
 }
 
 .todoComponent___whoP {
-  background-color: rgba(86, 85, 81, 0.856);
+  background-color: rgba(104, 76, 93, 0.856);
   border-radius: 3px;
   display: flex;
   height: 20px;

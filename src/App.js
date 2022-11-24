@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable */
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./App.css";
 import { TodoComponent } from "./components/TodoComponent";
@@ -6,13 +7,14 @@ import { TodoCreate } from "./components/TodoCreate";
 
 function App() {
   const [project, setProject] = useState("");
+  const todos = useSelector((store) => store.todos.todosList);
+
   const types = [
     "Planned",
     "Ready for Development",
     "In Development",
     "Ready for Review"
   ];
-  const todos = useSelector((store) => store.todos.todosList);
 
   /* Take out diffrent project for dropdown "project" */
 
@@ -23,8 +25,6 @@ function App() {
     .filter((item, index, arr) => {
       return arr.indexOf(item) === index;
     });
-
-  useEffect(() => {}, [todos]);
 
   return (
     <article className="App">
@@ -49,9 +49,19 @@ function App() {
         </div>
         <section className="todoList___content_grid">
           {types.map((category) => {
+            /* Take out how many todos there is under category  */
+
+            const count = todos.filter((e) => {
+              if (project === e.project && category === e.type) {
+                return <div key={e.id}></div>;
+              }
+            });
+
             return (
-              <section className="todoList___category_section">
-                <h1>{category}</h1>
+              <section key={category} className="todoList___category_section">
+                <h1>
+                  {category} ({count.length})
+                </h1>
                 {todos &&
                   todos.map((item) => {
                     if (item.project === project) {

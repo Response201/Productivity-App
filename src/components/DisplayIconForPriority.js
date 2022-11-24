@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
 import triangle from "../assets/icons/triangle-symbol.svg";
-export const DisplayIconForPriority = ({ status }) => {
+export const DisplayIconForPriority = ({ priority }) => {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    if (status === "Critical") {
+    if (priority === "Critical") {
       setColor("red");
     }
-    if (status === "High") {
+    if (priority === "High") {
       setColor("orange");
     }
-    if (status === "Moderate") {
+    if (priority === "Moderate") {
       setColor("yellow");
-    } else if (status === "Low") {
+    } else if (priority === "Low") {
       setColor("green");
     }
-  }, [status]);
+  }, [priority]);
 
   return (
     <div
       style={{
-        height: "16px",
-        width: "16px",
+        height: "19px",
+        width: "19px",
         backgroundColor: `${color}`,
-        zIndex: "0",
         borderRadius: "50%",
         display: "flex",
         alignItems: "center",
@@ -31,7 +30,7 @@ export const DisplayIconForPriority = ({ status }) => {
       }}
     >
       <img
-        style={{ height: "14px", width: "14px" }}
+        style={{ height: "17px", width: "17px" }}
         src={triangle}
         alt="icon"
       />

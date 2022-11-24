@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useRef, useState } from "react";
 import edit from "../assets/lottie/edit.json";
 import Lottie from "lottie-react";

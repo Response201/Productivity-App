@@ -4,7 +4,8 @@ import data from "../data/data.json";
 export const todos = createSlice({
   name: "todos",
   initialState: {
-    todosList: [...data]
+    todosList: [...data],
+   
   },
   reducers: {
     newTodo: (state, action) => {
@@ -42,8 +43,19 @@ export const todos = createSlice({
         (todo) => todo.id === action.payload.id
       );
       state.todosList[todoIndex].type = action.payload.type;
-    }
+    },
+
+    changeStatus: (state, action) => {
+      const todoIndex = state.todosList.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+      state.todosList[todoIndex].status = action.payload.status;
+    },
+
+   
+
+
   }
 });
 
-export const { completeTodo, deleteTodo, changeType, newTodo } = todos.actions;
+export const { completeTodo, deleteTodo, changeType, newTodo, changeStatus, setProjectList } = todos.actions;

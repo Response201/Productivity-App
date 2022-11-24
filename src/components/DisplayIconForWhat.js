@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import Bug from "../assets/icons/bug.svg";
 import Feature from "../assets/icons/feature.svg";
 import Database from "../assets/icons/databas.svg";
-export const DisplayIconForWhat = ({ item }) => {
+export const DisplayIconForWhat = ({ what }) => {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    if (item === "Bug") {
+    if (what === "Bug") {
       setImage(Bug);
     }
-    if (item === "Database") {
+    if (what === "Database") {
       setImage(Database);
-    } else if (item === "Feature") {
+    } else if (what === "Feature") {
       setImage(Feature);
     }
-  }, [item]);
+  }, [what]);
 
   return (
     <div style={{ heigth: "20px", width: "20px",display:'flex', justifyContent:'center'  }}>

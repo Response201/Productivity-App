@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./todoComponent.css";
 import { useDispatch } from "react-redux";
-import { changeType, deleteTodo, completeTodo } from "../reducer/todos";
+import {
+  changeType,
+  deleteTodo,
+  completeTodo,
+  changeStatus
+} from "../reducer/todos";
 import { BtnComplete } from "./BtnComplete";
 import { BtnDelete } from "./BtnDelete";
 import { BtnEdit } from "./BtnEdit";
 import { DisplayIconForWhat } from "./DisplayIconForWhat";
 import { DisplayIconForPriority } from "./DisplayIconForPriority";
+import { DisplayIconForStatus } from "./DisplayIconForStatus";
 
 export const TodoComponent = ({ item }) => {
   const [edit, setEdit] = useState(true);
   const [newType, setNewType] = useState(item.type);
   const [deletes, setDeletes] = useState(false);
   const [move, setMove] = useState(false);
-  const [statusIcon, setstatusIcon] = useState(item.status)
+  const [statusIcon, setstatusIcon] = useState(item.status);
 
   const dispatch = useDispatch();
 
@@ -25,6 +31,7 @@ export const TodoComponent = ({ item }) => {
   /* complete todo */
   const onClickComplete = () => {
     dispatch(completeTodo({ id: item.id, done: !item.done }));
+    dispatch(changeStatus({ id: item.id, status: "" }));
   };
 
   /* Delete todo */
@@ -42,26 +49,19 @@ export const TodoComponent = ({ item }) => {
     setMove(!move);
   };
 
+  /* Change the status of "todo" */
 
-/* Change the status of "todo" */
-
-const onClickChangeStatus = () => {
-
-
- if(item.status === 'open'){
-  setstatusIcon('pending')
- }
-else if(item.status === 'pending'){
-  setstatusIcon('')
-}
-else{
-  setstatusIcon('open')
-}
-
-
-}
-
-
+  const onClickChangeStatus = () => {
+    if (!item.done) {
+      if (item.status === "open") {
+        dispatch(changeStatus({ id: item.id, status: "pending" }));
+      } else if (item.status === "pending") {
+        dispatch(changeStatus({ id: item.id, status: "" }));
+      } else if (item.status === "") {
+        dispatch(changeStatus({ id: item.id, status: "open" }));
+      }
+    }
+  };
 
   return (
     <section className="todoComponent___content">
@@ -104,29 +104,40 @@ else{
           </>
         )}
 
-
         <section className="todoComponent___iconAndBtns">
-          <section className="todoComponent___btns"> 
-          <div
-            onClick={onClickComplete}
-            className="todoComponent___completeLottie_container"
-          >
-            <BtnComplete item={item} />
-          </div>
+          <section className="todoComponent___btns">
+            <div
+              onClick={onClickComplete}
+              className="todoComponent___completeLottie_container"
+            >
+              <BtnComplete item={item} />
+            </div>
 
-          <div
-            onClick={onClickDelete}
-            className="todoComponent___deleteLottie_container"
-          >
-            <BtnDelete deletes={deletes} />
-          </div>
+            <div
+              onClick={onClickDelete}
+              className="todoComponent___deleteLottie_container"
+            >
+              <BtnDelete deletes={deletes} />
+            </div>
           </section>
-<section  className="todoComponent___icon"> 
-          <p className="todoComponent___whoP"> {item.who} </p>
-<div className="todoComponent___whatP"> <DisplayIconForWhat item={item.what} />  </div>
-<div className="todoComponent___prioP" >   <DisplayIconForPriority status={item.priority} /> </div>
-<div className="todoComponent___statusP" onClick={onClickChangeStatus}> {item.status} </div>
-</section>
+          <section className="todoComponent___icon">
+            <p className="todoComponent___whoP"> {item.who} </p>
+            <div className="todoComponent___whatP">
+              {" "}
+              <DisplayIconForWhat what={item.what} />{" "}
+            </div>
+            <div className="todoComponent___prioP">
+              {" "}
+              <DisplayIconForPriority priority={item.priority} />{" "}
+            </div>
+            <div
+              className="todoComponent___statusP"
+              onClick={onClickChangeStatus}
+            >
+              {" "}
+              <DisplayIconForStatus status={item.status} />{" "}
+            </div>
+          </section>
         </section>
       </section>
     </section>

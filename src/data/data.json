@@ -44,6 +44,7 @@
     "who": "Frontend",
     "what": "Bug",
     "priority": "High",
+    "status":"open",
     "done": false
   },
   {
