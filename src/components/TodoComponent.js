@@ -38,6 +38,9 @@ export const TodoComponent = ({ item }) => {
 
   const onClickDelete = () => {
     setDeletes(true);
+
+    /* timeout => needed to show the delete-btn animation */
+
     setTimeout(() => {
       dispatch(deleteTodo({ id: item.id }));
     }, 2500);

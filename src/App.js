@@ -7,6 +7,7 @@ import { TodoCreate } from "./components/TodoCreate";
 
 function App() {
   const [project, setProject] = useState("");
+  const [showForm, setShowForm] = useState(false);
   const todos = useSelector((store) => store.todos.todosList);
 
   const types = [
@@ -15,6 +16,12 @@ function App() {
     "In Development",
     "Ready for Review"
   ];
+
+  const OnClickToForm = () => {
+    setShowForm(true);
+
+    setProject("");
+  };
 
   /* Take out diffrent project for dropdown "project" */
 
@@ -28,14 +35,17 @@ function App() {
 
   return (
     <article className="App">
-      <section className="createTodo___container">
-        <TodoCreate />
-      </section>
+      {showForm && (
+        <section className="createTodo___container">
+          <TodoCreate setShowForm={setShowForm} />
+        </section>
+      )}
 
       <section className="todoList___container">
         <div className="todoList___select_project_input">
           <select
             style={{ heigth: "50px" }}
+            value={project}
             onChange={(e) => setProject(e.target.value)}
           >
             <option style={{ heigth: "50px" }}>Select project</option>
@@ -46,6 +56,8 @@ function App() {
                 </option>
               ))}
           </select>
+
+          <button onClick={OnClickToForm}> Create new todo</button>
         </div>
         <section className="todoList___content_grid">
           {types.map((category) => {

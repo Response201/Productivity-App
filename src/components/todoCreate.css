@@ -1,0 +1,48 @@
+.todoCreate____container {
+  height: 90%;
+  width: 100%;
+  max-width: 650px;
+  max-height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+
+}
+
+.todoCreate____closeBtn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.todoCreate____image {
+overflow: hidden;
+  width: 40%;
+  height: 100%;
+}
+
+.todoCreate____form_container{
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+
+
+}
+
+
+
+
+.todoCreate____section_btn{
+width: 50%;
+display: flex;
+justify-content: space-between;
+
+
+}

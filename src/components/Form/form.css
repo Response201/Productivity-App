@@ -1,0 +1,30 @@
+.todoCreate____form {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  
+
+}
+.form____section_newProject {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+
+/* btn Next */
+.btnTrue{
+background-color: rgb(255, 255, 255);
+
+}
+.btnFalse{
+  background-color: rgb(100, 98, 98);
+}

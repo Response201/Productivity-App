@@ -26,7 +26,8 @@ export const DisplayIconForPriority = ({ priority }) => {
         borderRadius: "50%",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        boxShadow:" black 0px 0px 5px 1px inset"
       }}
     >
       <img
