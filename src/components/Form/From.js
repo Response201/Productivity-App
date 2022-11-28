@@ -1,5 +1,6 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { newTodo } from "../../reducer/todos";
 import "./form.css";
 import { PageFour } from "./PageFour";
@@ -43,9 +44,7 @@ export const From = ({ setShowForm }) => {
       setProject(project);
  
 
-
       /* timeout => needed to show the btn animation */
-
       setTimeout(() => {
         setShowForm(false);
         setPage(1);

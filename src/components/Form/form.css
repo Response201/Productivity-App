@@ -1,30 +1,128 @@
 .todoCreate____form {
-  height: 75%;
+  height: 70%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  color: white;
+  color: var(--text);
   
-
 }
-.form____section_newProject {
-  width: 70%;
+
+/* Page 2 - select and checkbox */
+.form____section_newProject_checkbox_label {
+  width: 55%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  height: 30px;
   align-items: center;
   justify-content: space-between;
+  font-weight: 500;
+}
+.form____section_newProject_checkbox_label input {
+  display: flex;
+  flex-direction: row;
+  height: 15px;
+  width: 15px;
+ 
+}
+
+
+
+input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  left: 0;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: rgb(194, 173, 252);
+}
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+
+
+
+
+
+/* Input */
+input,
+select,
+input::placeholder,
+select::placeholder {
+  background-color: rgb(194, 173, 252);
+  border: none;
+  border-bottom: solid 2px var(--text);;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0em;
+  padding: 0;
+  width: 60%;
+  height: 30px;
+  max-width: 300px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+input {
+  outline: none;
+  padding: 0;
 }
 
 
 
 
 /* btn Next */
-.btnTrue{
-background-color: rgb(255, 255, 255);
+.btnTrue {
+  height: 30px;
+  width: 75px;
+  background-color:   rgb(173, 155, 222);
+box-shadow: inset 0px 0px 3px var(--text);;
+border: none;
+border-radius: 2px;
+}
+.btnTrue:hover{
+  background-color: rgb(194, 173, 252);
+box-shadow: inset 0px 0px 3px var(--text);;
+border: none;
 
 }
-.btnFalse{
-  background-color: rgb(100, 98, 98);
+
+
+
+.btnFalse, .btnFalse:hover {
+  height: 30px;
+  width: 75px;
+  border-radius: 2px;
+  background-color: rgb(139, 124, 179);
+  box-shadow: inset 0px 0px 5px var(--text);;
+border: none;
 }

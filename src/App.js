@@ -57,7 +57,7 @@ function App() {
               ))}
           </select>
 
-          <button onClick={OnClickToForm}> Create new todo</button>
+          <button onClick={OnClickToForm}>Create new todo</button>
         </div>
         <section className="todoList___content_grid">
           {types.map((category) => {

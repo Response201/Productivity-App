@@ -1,38 +1,27 @@
 .todoComponent___content {
   width: 100%;
-  height: 100%;
-
-  margin-bottom: 5px;
-  background-color: rgb(135, 187, 187);
+  height: 98%;
+  padding-top: 1%;
+  margin-bottom: 15px;
   position: relative;
   border-radius: 5px;
-}
-
-.todoComponent___edit_section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 90px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
+  color: rgb(24, 25, 27);
 }
 
 .todoComponent___editButton {
   position: absolute;
   right: 0;
-  margin-right: 5px;
   height: 100px;
   width: 100px;
 }
 
 .lottieEdit {
-  margin-top: -27%;
+  margin-top: -35%;
   position: absolute;
   top: 0%;
   bottom: 0%;
   right: 0;
-  left: 18%;
+  left: 23%;
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -40,37 +29,77 @@
 
 .todoComponent___editButton p {
   position: absolute;
-  margin-top: 10px;
-  left: 55%;
+  margin-top: 5px;
+  left: 60%;
   z-index: 10;
-  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: default;
+}
+
+/* info from item */
+
+.todoComponent___item_container {
+  width: 98%;
+  padding-bottom: 35px;
+  height: fit-content;
+  letter-spacing: 1.5px;
+}
+
+.todoComponent___item_container h1 {
+  font-size: 18px;
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+.todoComponent___item_container p {
   font-size: 15px;
-  text-shadow: 1px 1px black;
+  margin: 25px 0;
+  padding: 0 2%;
 }
 
-.todoComponent___edit_section p {
-  margin: 0;
-  margin-bottom: 15px;
-  padding: 0;
-  text-align: start;
-  height: 30px;
+/* section type -dropdown and p  */
+
+.todoComponent___section_type {
+  height: 50px;
+  width: 300px;
+  margin: 0px 0 0 5px;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  position: relative;
+  justify-content: flex-start;
 }
 
+.todoComponent___section_type select,
+.todoComponent___section_type p {
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  width: 80%;
+  color: rgb(24, 25, 27);
+  font-family: "Courier New", Courier, monospace;
+}
+.todoComponent___section_type select {
+  font-family: "Courier New", Courier, monospace;
+  border-bottom: solid 1px #ffffff6a;
+  color: rgb(24, 25, 27);
+  background-color: rgba(64, 61, 61, 0.215);
+}
+.todoComponent___section_type p {
+  height: 25px;
 
+  margin: 3px 0 0 4.5px;
+}
 
 /* Icon and button section */
 
 .todoComponent___iconAndBtns {
-  position: relative;
+  position: absolute;
   width: 100%;
-  height: 33px;
-  overflow: hidden;
+  height: 40px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  background-color: rgba(174, 174, 174, 0.114);
+  bottom: 0;
 }
 
 /* Btns -lotties */
@@ -80,17 +109,19 @@
   min-width: 70px;
   display: flex;
   justify-content: space-between;
+  padding-left: 1%;
 }
 
 .todoComponent___completeLottie_container {
-  height: 30px;
-  width: 30px;
+  height: 28.5px;
+  width: 28.5px;
   border-radius: 50%;
   background-color: rgb(188, 203, 188);
-  padding: 0;
-  position: absolute;
+  position: relative;
   z-index: 10;
   margin: 1px;
+  transition: ease-in 0.2s;
+  box-shadow: 0px 0px 3px rgb(85, 85, 85);
 }
 
 .lottie {
@@ -106,10 +137,10 @@
 }
 
 .todoComponent___deleteLottie_container {
-  height: 32px;
-  width: 32px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
-  background-color: rgb(185, 144, 149);
+  background-color: rgba(247, 164, 192, 0.692);
   padding: 0;
   position: absolute;
   z-index: 10;
@@ -117,6 +148,7 @@
   left: 45px;
   transition: ease-in 0.2s;
   overflow: hidden;
+  box-shadow: 0px 0px 3px rgb(85, 85, 85);
 }
 .todoComponent___deleteLottie_container:hover {
   transform: scale(95%);

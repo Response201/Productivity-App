@@ -1,4 +1,6 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
+import deltete from "../assets/lottie/delete.json";
 import "./todoComponent.css";
 import { useDispatch } from "react-redux";
 import {
@@ -20,7 +22,7 @@ export const TodoComponent = ({ item }) => {
   const [deletes, setDeletes] = useState(false);
   const [move, setMove] = useState(false);
   const [statusIcon, setstatusIcon] = useState(item.status);
-
+  const [color, setcolor] = useState('var(--pink)')
   const dispatch = useDispatch();
 
   /* change type for a todo */
@@ -66,8 +68,27 @@ export const TodoComponent = ({ item }) => {
     }
   };
 
+
+useEffect(() => {
+
+if(item.type === 'Planned' ){
+setcolor('pink')
+
+}
+else if(item.type === 'Ready for Development'){setcolor('purple')}
+else if(item.type === 'In Development'){setcolor('orange')}
+else if(item.type === 'Ready for Review'){setcolor('yellow')}
+
+
+ 
+}, [item.type])
+
+
+
+
+
   return (
-    <section className="todoComponent___content">
+    <section className="todoComponent___content" style={{background: `linear-gradient(var(--${color}) , #d3d3d3)`}}>
       {!item.done && (
         <div
           className="todoComponent___editButton"
@@ -78,10 +99,11 @@ export const TodoComponent = ({ item }) => {
           <BtnEdit move={move} />
         </div>
       )}
-
+<div className="todoComponent___item_container">
       <h1>{item.title}</h1>
       <p>{item.description}</p>
-      <section className="todoComponent___edit_section">
+  
+<section className="todoComponent___section_type"> 
         {edit ? (
           <>{item.done ? <p>Done</p> : <p>{item.type}</p>}</>
         ) : (
@@ -89,8 +111,8 @@ export const TodoComponent = ({ item }) => {
             {item.done ? (
               <p>Done</p>
             ) : (
-              <p>
-                Type
+             
+              
                 <select
                   value={item.type}
                   onChange={(e) => setNewType(e.target.value)}
@@ -102,10 +124,13 @@ export const TodoComponent = ({ item }) => {
                   <option value="In Development">In Development</option>
                   <option value="Ready for Review">Ready for Review</option>
                 </select>
-              </p>
+              
             )}
           </>
         )}
+        </section>
+        </div>
+        
 
         <section className="todoComponent___iconAndBtns">
           <section className="todoComponent___btns">
@@ -120,7 +145,7 @@ export const TodoComponent = ({ item }) => {
               onClick={onClickDelete}
               className="todoComponent___deleteLottie_container"
             >
-              <BtnDelete deletes={deletes} />
+              <BtnDelete deletes={deletes} deltete={deltete}   />
             </div>
           </section>
           <section className="todoComponent___icon">
@@ -142,7 +167,7 @@ export const TodoComponent = ({ item }) => {
             </div>
           </section>
         </section>
-      </section>
+ 
     </section>
   );
 };

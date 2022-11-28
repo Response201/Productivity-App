@@ -26,23 +26,21 @@ export const PageTwo = ({newProject, setNewProject, setProject, project}) => {
 
 
   return (
-    <section className="form____section_newProject">
+    <>
           {newProject ? (
-            <label>
-              {" "}
-              Project name{" "}
+            
               <input
                 type="text"
                 value={project}
                 onChange={(e) => setProject(e.target.value)}
-              />{" "}
-            </label>
+                placeholder=' Project name'
+              />
+            
           ) : (
             <select onChange={(e) => setProject(e.target.value)}>
               <option>
                 {" "}
-                {project !== "" ? `${project}` : "Select project"}{" "}
-              </option>
+                {project !== "" ? `${project}` : "Select project"}</option>
               {unique_project.length >= 1 &&
                 unique_project.map((item) => (
                   <option key={item} value={item}>
@@ -52,14 +50,16 @@ export const PageTwo = ({newProject, setNewProject, setProject, project}) => {
                 ))}
             </select>
           )}
+          <div className='form____section_newProject_checkbox_label'> 
           <label>
-            New project?
+            New project?</label>
             <input
               type="checkbox"
               value={newProject}
               onClick={OnclickNewProject}
             />
-          </label>
-        </section>
+        
+          </div>
+        </>
   )
 }

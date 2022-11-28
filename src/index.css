@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
 }
 
 code {
@@ -12,10 +13,12 @@ code {
     monospace;
 }
 
-:color {
-  --purple: 57, 0, 153;
-  --magenta: 158, 0, 89;
-  --pink: 255, 0, 84;
-  --orange: 255, 84, 0;
-  --yellow: 255, 189, 0;
+:root {
+  --purple: rgb(173, 127, 253);
+  --pink: rgb(249, 127, 168);
+  --orange: rgb(252, 170, 130);
+  --yellow: rgb(248, 217, 131);
+
+  --bg:rgb(234, 234, 234);
+  --text:rgb(20, 20, 20);
 }

@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import deltete from "../assets/lottie/delete.json";
 import Lottie from "lottie-react";
-export const BtnDelete = ({ deletes }) => {
+export const BtnDelete = ({ deletes, deltete }) => {
   const [isFirstRun, setisFirstRun] = useState(true);
   const lottieRef = useRef(null);
 
   useEffect(() => {
     if (isFirstRun) {
       lottieRef.current.goToAndStop(3, 3);
-
       setisFirstRun(false);
     } else {
       if (!isFirstRun && deletes) {
