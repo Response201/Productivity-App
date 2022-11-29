@@ -42,7 +42,7 @@
   display: flex;
   width: 40%;
   min-width: 220px;
-  max-width: 280px;
+  max-width: 250px;
   align-items: center;
   justify-content: space-between;
 }
@@ -62,7 +62,7 @@ font-size: 70%;
 
 .todoList___select_project_input button {
   background-color: var(--yellow);
-  font-size: 60%;
+  font-size: 58%;
   
   color: var(--text);
   box-shadow: inset 1px 1px 5px rgb(138, 138, 138),
@@ -70,7 +70,7 @@ font-size: 70%;
   border: none;
   border-radius: 3px;
   height: 30px;
-  width: 45%;
+  width: 48%;
   max-width: 90px;
   transition: 0.2s ease-in;
 }

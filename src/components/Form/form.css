@@ -62,6 +62,7 @@ input,
 select,
 input::placeholder,
 select::placeholder,
+textarea::placeholder,
 textarea {
   background-color: rgb(194, 173, 252);
   border: none;
