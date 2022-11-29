@@ -98,12 +98,12 @@ textarea {
   width: 60%;
   font-size: clamp(15px, 2vw, 17px);
   resize: none;
-  color: var(--text);
+  color: var(--textForm);
 }
 
 textarea::placeholder{
 
-color: var(--text);
+color: var(--textForm);
 
 }
 
