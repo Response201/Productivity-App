@@ -21,7 +21,8 @@ export const Mode = ({ mode }) => {
       
       }
     }
-  }, [mode,isFirstRun]);
+    // eslint-disable-next-line
+  }, [mode]);
 
   return (
     <>
