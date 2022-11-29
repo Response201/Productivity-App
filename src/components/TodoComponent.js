@@ -88,7 +88,7 @@ else if(item.type === 'Ready for Review'){setcolor('yellow')}
 
 
   return (
-    <section className="todoComponent___content" style={{background: `linear-gradient(var(--${color}) , #d3d3d3)`}}>
+    <section className="todoComponent___content" style={{background: `linear-gradient(var(--${color}) , var(--gradient))`}}>
       {!item.done && (
         <div
           className="todoComponent___editButton"

@@ -1,14 +1,19 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
+import { Mode } from "./components/Mode";
 import { TodoComponent } from "./components/TodoComponent";
 import { TodoCreate } from "./components/TodoCreate";
+import { ui } from "./reducer/ui";
 
 function App() {
   const [project, setProject] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [mode, setMode] = useState(true);
   const todos = useSelector((store) => store.todos.todosList);
+  const themes = useSelector((store) => store.ui.theme);
+  const dispatch = useDispatch();
 
   const types = [
     "Planned",
@@ -33,8 +38,29 @@ function App() {
       return arr.indexOf(item) === index;
     });
 
+  /* them switch */
+
+  React.useEffect(() => {
+    document.documentElement.className = themes;
+  }, [themes]);
+
+  const OnClickToggle = () => {
+    if (themes === "root") {
+      setMode(false);
+      setTimeout(() => {
+        dispatch(ui.actions.setTheme("dark"));
+      }, 1000);
+    }
+    if (themes === "dark") {
+      setMode(true);
+      setTimeout(() => {
+        dispatch(ui.actions.setTheme("root"));
+      }, 1000);
+    }
+  };
+
   return (
-    <article className="App">
+    <article body={themes} className="App">
       {showForm && (
         <section className="createTodo___container">
           <TodoCreate setShowForm={setShowForm} />
@@ -58,6 +84,19 @@ function App() {
           </select>
 
           <button onClick={OnClickToForm}>Create new todo</button>
+
+          <section
+            style={{
+              width: "65px",
+              position: "absolute",
+              right: "0.5%",
+              display: "flex",
+              zIndex: "100"
+            }}
+            onClick={OnClickToggle}
+          >
+            <Mode mode={mode} />
+          </section>
         </div>
         <section className="todoList___content_grid">
           {types.map((category) => {

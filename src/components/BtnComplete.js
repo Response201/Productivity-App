@@ -26,13 +26,14 @@ export const BtnComplete = ({ item }) => {
   }, [item.done, isFirstRun]);
 
   return (
-    <div>
+    <div >
       <Lottie
         animationData={check}
         loop={false}
         autoPlay={false}
         lottieRef={lottieRef}
         className="lottie"
+        
       />
     </div>
   );

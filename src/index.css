@@ -19,6 +19,21 @@ code {
   --orange: rgb(252, 170, 130);
   --yellow: rgb(248, 217, 131);
 
-  --bg:rgb(234, 234, 234);
-  --text:rgb(20, 20, 20);
+  --bg: rgb(234, 234, 234);
+  --text: rgb(20, 20, 20);
+  --textForm: rgb(20, 20, 20);
+  --gradient:rgb(218, 214, 214);
+  
+}
+
+.dark {
+  --purple: rgb(48, 32, 73);
+  --pink: rgb(90, 46, 60);
+  --orange: rgb(83, 54, 40);
+  --yellow: rgb(114, 99, 58);
+
+  --bg: rgb(15, 15, 15);
+  --text: rgb(185, 183, 183);
+  --textForm:rgb(63, 62, 62);
+  --gradient:rgb(73, 71, 71);
 }
