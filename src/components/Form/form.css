@@ -62,7 +62,6 @@ input,
 select,
 input::placeholder,
 select::placeholder,
-textarea::placeholder,
 textarea {
   background-color: rgb(194, 173, 252);
   border: none;
@@ -101,6 +100,13 @@ textarea {
   resize: none;
   color: var(--text);
 }
+
+textarea::placeholder{
+
+color: var(--text);
+
+}
+
 
 /* btn Next */
 .btnTrue {

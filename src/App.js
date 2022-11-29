@@ -83,7 +83,7 @@ function App() {
               ))}
           </select>
 
-          <button onClick={OnClickToForm}>Create new todo</button>
+          <button onClick={OnClickToForm}>New todo</button>
 
           <section
             style={{
