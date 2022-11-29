@@ -40,10 +40,12 @@
 /* info from item */
 
 .todoComponent___item_container {
-  width: 98%;
+  width: 96%;
   padding-bottom: 35px;
   height: fit-content;
   letter-spacing: 1.5px;
+
+ 
 }
 
 .todoComponent___item_container h1 {
@@ -55,6 +57,10 @@
   font-size: 15px;
   margin: 25px 0;
   padding: 0 2%;
+  white-space:normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
 }
 
 /* section type -dropdown and p  */

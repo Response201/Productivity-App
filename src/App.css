@@ -1,6 +1,3 @@
-
-
-
 .App {
   height: 100vh;
   width: 100vw;
@@ -36,51 +33,51 @@
 /* todo display list and select project */
 
 .todoList___container {
- 
   height: 97%;
   width: 100%;
   padding: 1% 1vw 2% 1vw;
- 
 }
 
 .todoList___select_project_input {
   display: flex;
-  width: 100%;
-  max-width: 400px;
+  width: 40%;
+  min-width: 220px;
+  max-width: 280px;
   align-items: center;
   justify-content: space-between;
- 
 }
 
-
-.todoList___select_project_input
-select,
+.todoList___select_project_input select,
 select::placeholder {
   background-color: var(--yellow);
   color: var(--text);
-  box-shadow: inset 1px 1px 5px rgb(138, 138, 138), 2px 2px 5px rgb(164, 164, 164);
-border-radius: 3px;
-border-bottom: none;
+  box-shadow: inset 1px 1px 5px rgb(138, 138, 138),
+    2px 2px 5px rgb(164, 164, 164);
+  border-radius: 3px;
+  border-bottom: none;
+  width: 55%;
+  max-width: 150px;
 }
 
-
-
-.todoList___select_project_input button{
- background-color: var(--yellow);
- color: var(--text);
- box-shadow: inset 1px 1px 5px rgb(138, 138, 138), 2px 2px 5px rgb(164, 164, 164);
- border: none;
- border-radius: 3px;
- height: 27px;
- transition: 0.2s ease-in;
-}
-.todoList___select_project_input button:hover{
+.todoList___select_project_input button {
   background-color: var(--yellow);
-  box-shadow: inset 1px 1px 5px rgb(138, 138, 138), 2px 2px 5px rgb(164, 164, 164);
- }
-
-
-
+  font-size: 60%;
+  font-weight: 700;
+  color: var(--text);
+  box-shadow: inset 1px 1px 5px rgb(138, 138, 138),
+    2px 2px 5px rgb(164, 164, 164);
+  border: none;
+  border-radius: 3px;
+  height: 30px;
+  width: 40%;
+  max-width: 90px;
+  transition: 0.2s ease-in;
+}
+.todoList___select_project_input button:hover {
+  background-color: var(--yellow);
+  box-shadow: inset 1px 1px 5px rgb(138, 138, 138),
+    2px 2px 5px rgb(164, 164, 164);
+}
 
 .todoList___content_grid {
   display: grid;
@@ -98,9 +95,6 @@ border-bottom: none;
   border: 2px dotted var(--purple);
   padding: 5% 2%;
   color: var(--text);
-
- 
-
 }
 .todoList___category_section h1 {
   text-align: center;

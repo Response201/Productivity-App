@@ -34,6 +34,7 @@ export const PageTwo = ({newProject, setNewProject, setProject, project}) => {
                 value={project}
                 onChange={(e) => setProject(e.target.value)}
                 placeholder=' Project name'
+                maxLength={15}
               />
             
           ) : (
