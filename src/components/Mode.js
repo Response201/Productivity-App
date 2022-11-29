@@ -21,7 +21,7 @@ export const Mode = ({ mode }) => {
       
       }
     }
-  }, [mode]);
+  }, [mode,isFirstRun]);
 
   return (
     <>
