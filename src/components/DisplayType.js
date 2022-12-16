@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { changeType, UpdateTodo } from "../reducer/todos";
 
 export const DisplayType = ({ item }) => {
-  const [newType, setNewType] = useState(item.type);
   const dispatch = useDispatch();
 
   /* change type for a todo */
@@ -14,7 +13,7 @@ export const DisplayType = ({ item }) => {
   };
 
   return (
-    <select value={newType} onChange={(e) => ChangeType(e.target.value)}>
+    <select value={item.type} onChange={(e) => ChangeType(e.target.value)}>
       <option value="Planned">Planned</option>
       <option value="Ready for Development">Ready for Development</option>
       <option value="In Development">In Development</option>
