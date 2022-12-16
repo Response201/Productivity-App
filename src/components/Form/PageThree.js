@@ -18,6 +18,8 @@ export const PageThree = ({setType, setWho}) => {
       <select onChange={(e) => setWho(e.target.value)}>
         <option value="Frontend">Frontend</option>
         <option value="Backend">Backend</option>
+        <option value="Designer">Designer</option>
+        <option value="Other">Other</option>
       </select>
   
   </>

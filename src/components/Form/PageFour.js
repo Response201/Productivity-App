@@ -9,6 +9,7 @@ export const PageFour = ({setWhat, setPriority}) => {
               <option value="Feature">Feature</option>
               <option value="Bug">Bug</option>
               <option value="Database">Database</option>
+              <option value="Design">Design</option>
             </select>
           
            

@@ -4,7 +4,6 @@ import deltete from "../assets/lottie/delete.json";
 import "./todoComponent.css";
 import { useDispatch } from "react-redux";
 import {
-  changeType,
   deleteTodo,
   completeTodo,
   changeStatus,
@@ -17,24 +16,15 @@ import { BtnEdit } from "./BtnEdit";
 import { DisplayIconForWhat } from "./DisplayIconForWhat";
 import { DisplayIconForPriority } from "./DisplayIconForPriority";
 import { DisplayIconForStatus } from "./DisplayIconForStatus";
+import { DisplayWho } from "./DisplayWho";
+import { DisplayType } from "./DisplayType";
 
 export const TodoComponent = ({ item }) => {
   const [edit, setEdit] = useState(true);
-  const [newType, setNewType] = useState(item.type);
   const [deletes, setDeletes] = useState(false);
   const [move, setMove] = useState(false);
-  const [statusIcon, setstatusIcon] = useState(item.status);
-  const [color, setcolor] = useState("var(--pink)");
+  const [color, setColor] = useState("var(--pink)");
   const dispatch = useDispatch();
-
-  /* change type for a todo */
-
-  const ChangeType = (e) => {
-    dispatch(UpdateTodo({ id: item._id, type: e }));
-    dispatch(changeType({ id: item._id, type: e }));
-  };
-
-
 
   /* complete todo */
   const onClickComplete = () => {
@@ -54,7 +44,7 @@ export const TodoComponent = ({ item }) => {
       dispatch(deleteTodo({ id: item._id }));
       dispatch(DeleteThis({ id: item._id }));
     }, 2500);
-  }
+  };
 
   /* activate animation on mouse over edit-btn */
 
@@ -62,32 +52,17 @@ export const TodoComponent = ({ item }) => {
     setMove(!move);
   };
 
-  /* Change the status of "todo" */
-
-  const onClickChangeStatus = () => {
-    if (!item.done) {
-      if (item.status === "open") {
-        dispatch(changeStatus({ id: item._id, status: "pending" }));
-        dispatch(UpdateTodo({ id: item._id, status: "pending" }));
-      } else if (item.status === "pending") {
-        dispatch(changeStatus({ id: item._id, status: "" }));
-        dispatch(UpdateTodo({ id: item._id, status: "" }));
-      } else if (item.status === "") {
-        dispatch(changeStatus({ id: item._id, status: "open" }));
-        dispatch(UpdateTodo({ id: item._id, status: "open" }));
-      }
-    }
-  };
+  /* color after item.type */ 
 
   useEffect(() => {
     if (item.type === "Planned") {
-      setcolor("pink");
+      setColor("pink");
     } else if (item.type === "Ready for Development") {
-      setcolor("purple");
+      setColor("purple");
     } else if (item.type === "In Development") {
-      setcolor("orange");
+      setColor("orange");
     } else if (item.type === "Ready for Review") {
-      setcolor("yellow");
+      setColor("yellow");
     }
   }, [item.type]);
 
@@ -116,23 +91,7 @@ export const TodoComponent = ({ item }) => {
           {edit ? (
             <>{item.done ? <p>Done</p> : <p>{item.type}</p>}</>
           ) : (
-            <>
-              {item.done ? (
-                <p>Done</p>
-              ) : (
-                <select
-                  value={newType}
-                  onChange={(e) => ChangeType(e.target.value)}
-                >
-                  <option value="Planned">Planned</option>
-                  <option value="Ready for Development">
-                    Ready for Development
-                  </option>
-                  <option value="In Development">In Development</option>
-                  <option value="Ready for Review">Ready for Review</option>
-                </select>
-              )}
-            </>
+            <>{item.done ? <p>Done</p> : <DisplayType item={item} />}</>
           )}
         </section>
       </div>
@@ -154,21 +113,18 @@ export const TodoComponent = ({ item }) => {
           </div>
         </section>
         <section className="todoComponent___icon">
-          <p className="todoComponent___whoP"> {item.who} </p>
+          <DisplayWho item={item} />
           <div className="todoComponent___whatP">
             {" "}
-            <DisplayIconForWhat what={item.what} />{" "}
+            <DisplayIconForWhat what={item.what} item={item} />{" "}
           </div>
           <div className="todoComponent___prioP">
             {" "}
-            <DisplayIconForPriority priority={item.priority} />{" "}
+            <DisplayIconForPriority priority={item.priority} item={item} />{" "}
           </div>
-          <div
-            className="todoComponent___statusP"
-            onClick={onClickChangeStatus}
-          >
+          <div className="todoComponent___statusP">
             {" "}
-            <DisplayIconForStatus status={item.status} />{" "}
+            <DisplayIconForStatus status={item.status} item={item} />{" "}
           </div>
         </section>
       </section>

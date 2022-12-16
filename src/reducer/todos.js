@@ -57,6 +57,26 @@ export const todos = createSlice({
       state.todosList[todoIndex].status = action.payload.status;
     },
 
+    changePriority: (state, action) => {
+      const todoIndex = state.todosList.findIndex(
+        (todo) => todo._id === action.payload.id
+      );
+      state.todosList[todoIndex].priority = action.payload.priority;
+    },
+
+    changeWhat: (state, action) => {
+      const todoIndex = state.todosList.findIndex(
+        (todo) => todo._id === action.payload.id
+      );
+      state.todosList[todoIndex].what = action.payload.what;
+    },
+    changeWho: (state, action) => {
+      const todoIndex = state.todosList.findIndex(
+        (todo) => todo._id === action.payload.id
+      );
+      state.todosList[todoIndex].who = action.payload.who;
+    },
+
     setTodoList: (state, action) => {
       state.todosList = action.payload;
     }
@@ -71,7 +91,10 @@ export const {
   changeStatus,
   setProjectList,
   setTodoList,
-  setGetNewTodo
+  setGetNewTodo,
+  changePriority,
+  changeWhat,
+  changeWho
 } = todos.actions;
 
 /* get list of all todos */
@@ -111,13 +134,13 @@ export const NewTodo = () => {
         })
       };
 
-      fetch(`http://localhost:8080/newTask`, options)
+      fetch(`${process.env.REACT_APP_URL}/newTask`, options)
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
             batch(() => {
               dispatch(setGetNewTodo());
-              dispatch(GetTodoList())
+              dispatch(GetTodoList());
             });
           }
         });
@@ -127,9 +150,7 @@ export const NewTodo = () => {
 
 /* update todo */
 
-export const UpdateTodo = ({ id, status, type, done }) => {
- 
-
+export const UpdateTodo = ({ id, status, type, done, priority, what, who }) => {
   return (dispatch) => {
     const options = {
       method: "PUT",
@@ -140,18 +161,18 @@ export const UpdateTodo = ({ id, status, type, done }) => {
         id,
         status,
         type,
-        done
+        done,
+        priority,
+        what,
+        who
       })
     };
 
-    fetch(`http://localhost:8080/updateTodo`, options)
+    fetch(`${process.env.REACT_APP_URL}/updateTodo`, options)
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-         
-            
-            dispatch(GetTodoList())
-         
+          dispatch(GetTodoList());
         }
       });
   };
@@ -159,28 +180,23 @@ export const UpdateTodo = ({ id, status, type, done }) => {
 
 /* Delete todo /deleteTodo */
 
-
-export const DeleteThis = ({id}) => {
- 
-
+export const DeleteThis = ({ id }) => {
   return (dispatch) => {
     const options = {
       method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-         id:id
-        })
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: id
+      })
     };
 
     fetch(`${process.env.REACT_APP_URL}/deleteTodo`, options)
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-      
-            dispatch(GetTodoList())
-         
+          dispatch(GetTodoList());
         }
       });
   };
