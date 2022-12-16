@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { newTodo } from "../../reducer/todos";
+import { NewTodo, newTodo } from "../../reducer/todos";
 import "./form.css";
 import { PageFour } from "./PageFour";
 import { PageOne } from "./PageOne";
@@ -42,6 +42,7 @@ export const From = ({ setShowForm }) => {
       setTitle("");
       setDescripton("");
       setProject(project);
+      dispatch(NewTodo())
  
 
       /* timeout => needed to show the btn animation */

@@ -9,7 +9,6 @@ export const TodoCreate = ({ setShowForm }) => {
 
   const OnclickClose = () => {
     setDeletes(true);
-
     setTimeout(() => {
       setShowForm(false);
     }, 1000);

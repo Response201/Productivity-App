@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../data/data.json";
+import { batch } from "react-redux";
 
 export const todos = createSlice({
   name: "todos",
   initialState: {
-    todosList: [...data],
-   
+    todosList: [],
+    getnewTodo: {}
   },
   reducers: {
     newTodo: (state, action) => {
@@ -18,10 +18,15 @@ export const todos = createSlice({
         who: action.payload.who,
         what: action.payload.what,
         priority: action.payload.priority,
-        status:'',
+        status: "",
         done: false
       };
-      state.todosList = [...state.todosList, newTodo];
+      state.getnewTodo = newTodo;
+    },
+
+    /* set the "getnewTodo" back to {} */
+    setGetNewTodo: (state, action) => {
+      state.getnewTodo = {};
     },
 
     completeTodo: (state, action) => {
@@ -52,10 +57,131 @@ export const todos = createSlice({
       state.todosList[todoIndex].status = action.payload.status;
     },
 
-   
-
-
+    setTodoList: (state, action) => {
+      state.todosList = action.payload;
+    }
   }
 });
 
-export const { completeTodo, deleteTodo, changeType, newTodo, changeStatus, setProjectList } = todos.actions;
+export const {
+  completeTodo,
+  deleteTodo,
+  changeType,
+  newTodo,
+  changeStatus,
+  setProjectList,
+  setTodoList,
+  setGetNewTodo
+} = todos.actions;
+
+/* get list of all todos */
+
+export const GetTodoList = () => {
+  return async (dispatch) => {
+    const options = {
+      method: "GET"
+    };
+
+    fetch(`${process.env.REACT_APP_URL}/list`, options)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(setTodoList(data));
+      });
+  };
+};
+
+/* new todo */
+
+export const NewTodo = () => {
+  return (dispatch, getState) => {
+    if (getState().todos.getnewTodo !== {}) {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          title: getState().todos.getnewTodo.title,
+          description: getState().todos.getnewTodo.description,
+          project: getState().todos.getnewTodo.project,
+          type: getState().todos.getnewTodo.type,
+          who: getState().todos.getnewTodo.who,
+          what: getState().todos.getnewTodo.what,
+          priority: getState().todos.getnewTodo.priority
+        })
+      };
+
+      fetch(`${process.env.REACT_APP_URL}/newTask`, options)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            batch(() => {
+              dispatch(setGetNewTodo());
+              dispatch(GetTodoList());
+            });
+          }
+        });
+    }
+  };
+};
+
+/* update todo */
+
+export const UpdateTodo = ({ id, status, type, done }) => {
+ 
+
+  return (dispatch) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id,
+        status,
+        type,
+        done
+      })
+    };
+
+    fetch(`${process.env.REACT_APP_URL}/updateTodo`, options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+         
+            console.log("done");
+            dispatch(GetTodoList());
+         
+        }
+      });
+  };
+};
+
+/* Delete todo /deleteTodo */
+
+
+export const DeleteThis = ({id}) => {
+ 
+
+  return (dispatch) => {
+    const options = {
+      method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+         id:id
+        })
+    };
+
+    fetch(`${process.env.REACT_APP_URL}/deleteTodo`, options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+      
+            dispatch(GetTodoList());
+         
+        }
+      });
+  };
+};

@@ -1,10 +1,11 @@
 /* eslint-disable */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { Mode } from "./components/Mode";
 import { TodoComponent } from "./components/TodoComponent";
 import { TodoCreate } from "./components/TodoCreate";
+import { GetTodoList, NewTodo } from "./reducer/todos";
 import { ui } from "./reducer/ui";
 
 function App() {
@@ -15,6 +16,22 @@ function App() {
   const themes = useSelector((store) => store.ui.theme);
   const dispatch = useDispatch();
 
+
+
+
+
+useEffect(() => {
+ 
+  dispatch(GetTodoList());
+
+}, [])
+
+
+
+
+
+
+
   const types = [
     "Planned",
     "Ready for Development",
@@ -24,7 +41,6 @@ function App() {
 
   const OnClickToForm = () => {
     setShowForm(true);
-
     setProject("");
   };
 
@@ -43,6 +59,8 @@ function App() {
   React.useEffect(() => {
     document.documentElement.className = themes;
   }, [themes]);
+
+
 
   const OnClickToggle = () => {
     if (themes === "root") {

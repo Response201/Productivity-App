@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import open from "../assets/icons/open.png";
-import pending from "../assets/icons/pending.png"
+import pending from "../assets/icons/pending.png";
 import nothing from "../assets/icons/notOpen.png";
 export const DisplayIconForStatus = ({ status }) => {
   const [image, setImage] = useState("");
@@ -22,12 +22,14 @@ export const DisplayIconForStatus = ({ status }) => {
         heigth: "24px",
         width: "24px",
         display: "flex",
-        justifyContent: "center",
-      
+        justifyContent: "center"
       }}
     >
-      <img src={image} alt="icon" style={{ heigth: "23px", width: "23px",
-        borderRadius:'50%' }}   />
+      <img
+        src={image}
+        alt="icon"
+        style={{ heigth: "23px", width: "23px", borderRadius: "50%" }}
+      />
     </div>
   );
 };
