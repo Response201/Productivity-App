@@ -20,6 +20,8 @@ function App() {
 
 
 
+
+
 useEffect(() => {
  
   dispatch(GetTodoList());
@@ -136,7 +138,7 @@ useEffect(() => {
                     if (item.project === project) {
                       if (item.type === category) {
                         return (
-                          <section key={item.id}>
+                          <section key={item._id}>
                             <TodoComponent item={item} />{" "}
                           </section>
                         );

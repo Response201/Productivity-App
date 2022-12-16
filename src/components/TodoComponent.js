@@ -9,7 +9,6 @@ import {
   completeTodo,
   changeStatus,
   UpdateTodo,
-  DeleteTodo,
   DeleteThis
 } from "../reducer/todos";
 import { BtnComplete } from "./BtnComplete";
@@ -29,31 +28,33 @@ export const TodoComponent = ({ item }) => {
   const dispatch = useDispatch();
 
   /* change type for a todo */
-  useEffect(() => {
-    dispatch(changeType({ id: item.id, type: newType }));
-    dispatch(UpdateTodo({ id: item.id, type: newType }));
-  }, [newType, dispatch, item.id]);
+
+  const ChangeType = (e) => {
+    dispatch(UpdateTodo({ id: item._id, type: e }));
+    dispatch(changeType({ id: item._id, type: e }));
+  };
+
+
 
   /* complete todo */
   const onClickComplete = () => {
-    dispatch(completeTodo({ id: item.id, done: !item.done }));
-    dispatch(changeStatus({ id: item.id, status: "" }));
-    dispatch(UpdateTodo({ id: item.id, done: !item.done, status: "" }));
+    dispatch(completeTodo({ id: item._id, done: !item.done }));
+    dispatch(changeStatus({ id: item._id, status: "" }));
+    dispatch(UpdateTodo({ id: item._id, done: !item.done, status: "" }));
   };
 
   /* Delete todo */
 
   const onClickDelete = () => {
     setDeletes(true);
-    
 
     /* timeout => needed to show the delete-btn animation */
 
     setTimeout(() => {
-      dispatch(deleteTodo({ id: item.id }));
-      dispatch(DeleteThis({ id: item._id }))
+      dispatch(deleteTodo({ id: item._id }));
+      dispatch(DeleteThis({ id: item._id }));
     }, 2500);
-  };
+  }
 
   /* activate animation on mouse over edit-btn */
 
@@ -66,14 +67,14 @@ export const TodoComponent = ({ item }) => {
   const onClickChangeStatus = () => {
     if (!item.done) {
       if (item.status === "open") {
-        dispatch(changeStatus({ id: item.id, status: "pending" }));
-        dispatch(UpdateTodo({ id: item.id, status: "pending" }));
+        dispatch(changeStatus({ id: item._id, status: "pending" }));
+        dispatch(UpdateTodo({ id: item._id, status: "pending" }));
       } else if (item.status === "pending") {
-        dispatch(changeStatus({ id: item.id, status: "" }));
-        dispatch(UpdateTodo({ id: item.id, status: "" }));
+        dispatch(changeStatus({ id: item._id, status: "" }));
+        dispatch(UpdateTodo({ id: item._id, status: "" }));
       } else if (item.status === "") {
-        dispatch(changeStatus({ id: item.id, status: "open" }));
-        dispatch(UpdateTodo({ id: item.id, status: "open" }));
+        dispatch(changeStatus({ id: item._id, status: "open" }));
+        dispatch(UpdateTodo({ id: item._id, status: "open" }));
       }
     }
   };
@@ -120,8 +121,8 @@ export const TodoComponent = ({ item }) => {
                 <p>Done</p>
               ) : (
                 <select
-                  value={item.type}
-                  onChange={(e) => setNewType(e.target.value)}
+                  value={newType}
+                  onChange={(e) => ChangeType(e.target.value)}
                 >
                   <option value="Planned">Planned</option>
                   <option value="Ready for Development">

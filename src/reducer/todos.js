@@ -31,28 +31,28 @@ export const todos = createSlice({
 
     completeTodo: (state, action) => {
       const todoIndex = state.todosList.findIndex(
-        (todo) => todo.id === action.payload.id
+        (todo) => todo._id === action.payload.id
       );
       state.todosList[todoIndex].done = action.payload.done;
     },
 
     deleteTodo: (state, action) => {
       const todoIndex = state.todosList.findIndex(
-        (todo) => todo.id === action.payload.id
+        (todo) => todo._id === action.payload.id
       );
       state.todosList.splice(todoIndex, 1);
     },
 
     changeType: (state, action) => {
       const todoIndex = state.todosList.findIndex(
-        (todo) => todo.id === action.payload.id
+        (todo) => todo._id === action.payload.id
       );
       state.todosList[todoIndex].type = action.payload.type;
     },
 
     changeStatus: (state, action) => {
       const todoIndex = state.todosList.findIndex(
-        (todo) => todo.id === action.payload.id
+        (todo) => todo._id === action.payload.id
       );
       state.todosList[todoIndex].status = action.payload.status;
     },
@@ -111,13 +111,13 @@ export const NewTodo = () => {
         })
       };
 
-      fetch(`${process.env.REACT_APP_URL}/newTask`, options)
+      fetch(`http://localhost:8080/newTask`, options)
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
             batch(() => {
               dispatch(setGetNewTodo());
-              dispatch(GetTodoList());
+              dispatch(GetTodoList())
             });
           }
         });
@@ -144,13 +144,13 @@ export const UpdateTodo = ({ id, status, type, done }) => {
       })
     };
 
-    fetch(`${process.env.REACT_APP_URL}/updateTodo`, options)
+    fetch(`http://localhost:8080/updateTodo`, options)
       .then((res) => res.json())
       .then((data) => {
         if (data) {
          
-            console.log("done");
-            dispatch(GetTodoList());
+            
+            dispatch(GetTodoList())
          
         }
       });
@@ -179,7 +179,7 @@ export const DeleteThis = ({id}) => {
       .then((data) => {
         if (data) {
       
-            dispatch(GetTodoList());
+            dispatch(GetTodoList())
          
         }
       });

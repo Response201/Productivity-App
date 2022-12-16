@@ -59,8 +59,8 @@ export const From = ({ setShowForm }) => {
 
   useEffect(() => {
     if (
-      (page === 1 && title !== "" && descripton !== "") ||
-      (page === 2 && project !== "")
+      (page === 1 &&  project !== "") ||
+      (page === 2 && title !== "" && descripton !== "")
     ) {
       setBtnNext(true);
     } else if (page > 2) {
@@ -106,18 +106,22 @@ export const From = ({ setShowForm }) => {
     <form className="todoCreate____form">
       {page === 1 && (
         <PageOne
-          title={title}
-          setTitle={setTitle}
-          descripton={descripton}
-          setDescripton={setDescripton}
-        />
-      )}
-      {page === 2 && (
-        <PageTwo
+         
+
           newProject={newProject}
           setNewProject={setNewProject}
           setProject={setProject}
           project={project}
+
+
+        />
+      )}
+      {page === 2 && (
+        <PageTwo
+        title={title}
+        setTitle={setTitle}
+        descripton={descripton}
+        setDescripton={setDescripton}
         />
       )}
 

@@ -63,6 +63,7 @@ select,
 input::placeholder,
 select::placeholder,
 textarea {
+  outline: none;
   background-color: rgb(194, 173, 252);
   border: none;
   border-bottom: solid 2px var(--text);
@@ -90,6 +91,9 @@ input {
   outline: none;
   padding: 0;
 }
+input:focus {
+  outline: none;
+}
 
 textarea {
   word-wrap: break-word;
@@ -101,12 +105,9 @@ textarea {
   color: var(--textForm);
 }
 
-textarea::placeholder{
-
-color: var(--textForm);
-
+textarea::placeholder {
+  color: var(--textForm);
 }
-
 
 /* btn Next */
 .btnTrue {
