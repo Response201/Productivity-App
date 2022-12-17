@@ -16,12 +16,12 @@ export const TodoCreate = ({ setShowForm }) => {
 
   return (
     <section className="todoCreate____container">
-      <section className="todoCreate____image">
+      <section className={deletes? "todoCreate____image_close" :"todoCreate____image" }>
         <video className="videoTag" autoPlay loop muted>
           <source src={video} type="video/mp4" />
         </video>
       </section>
-      <section className="todoCreate____form_container">
+      <section className={deletes? "todoCreate____form_container_close" :"todoCreate____form_container" }>
         <div className="todoCreate____closeBtn">
           <button className="closeBtn" onClick={OnclickClose}>
             <BtnDelete deltete={deltete} deletes={deletes}  />

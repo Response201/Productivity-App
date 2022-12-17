@@ -26,24 +26,22 @@ export const From = ({ setShowForm }) => {
   /* create a todo */
   const OnsubmitTodo = () => {
     if (!preventBtnAction) {
-   
       setpreventBtnAction(true);
-        dispatch(
+      dispatch(
         newTodo({
           title: title,
           description: descripton,
           project: project,
           type: type,
-          who:who,
-          what:what,
-          priority:priority
+          who: who,
+          what: what,
+          priority: priority
         })
-      ); 
+      );
       setTitle("");
       setDescripton("");
       setProject(project);
-      dispatch(NewTodo())
- 
+      dispatch(NewTodo());
 
       /* timeout => needed to show the btn animation */
       setTimeout(() => {
@@ -55,11 +53,9 @@ export const From = ({ setShowForm }) => {
 
   /* Actions for Next-Btn */
 
-
-
   useEffect(() => {
     if (
-      (page === 1 &&  project !== "") ||
+      (page === 1 && project !== "") ||
       (page === 2 && title !== "" && descripton !== "")
     ) {
       setBtnNext(true);
@@ -69,8 +65,6 @@ export const From = ({ setShowForm }) => {
       setBtnNext(false);
     }
   }, [title, descripton, project, page]);
-
-
 
   const OncklickNext = (e) => {
     e.preventDefault();
@@ -106,22 +100,18 @@ export const From = ({ setShowForm }) => {
     <form className="todoCreate____form">
       {page === 1 && (
         <PageOne
-         
-
           newProject={newProject}
           setNewProject={setNewProject}
           setProject={setProject}
           project={project}
-
-
         />
       )}
       {page === 2 && (
         <PageTwo
-        title={title}
-        setTitle={setTitle}
-        descripton={descripton}
-        setDescripton={setDescripton}
+          title={title}
+          setTitle={setTitle}
+          descripton={descripton}
+          setDescripton={setDescripton}
         />
       )}
 
